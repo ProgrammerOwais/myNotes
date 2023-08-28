@@ -3,8 +3,8 @@ const express = require("express");
 const app = express();
 const PORT = 5000;
 const path = require("path");
-const { logger } = require("./middleware/logger");
-const errorHandler = require("./middleware/errorHandler");
+// const { logger } = require("./middleware/logger");
+// const errorHandler = require("./middleware/errorHandler");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const allowedOptions = require("./config/allowedOptions");
@@ -15,7 +15,7 @@ app.use(express.json());
 connectToDb();
 
 // custom middleware
-app.use(logger);
+// app.use(logger);
 
 // third party middleware , allow to use the cookie data
 app.use(cookieParser());
@@ -50,7 +50,7 @@ app.all("*", (req, res) => {
 });
 
 // custom middleware
-app.use(errorHandler);
+// app.use(errorHandler);
 
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
